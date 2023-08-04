@@ -1,0 +1,22 @@
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL345_U.h>
+
+Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
+
+void setup(void) {
+  Serial.begin(9600); // Seri iletişimi başlat, 9600 baud hızında iletişim yapılacak.
+  if(!accel.begin()) { // ADXL345 başlatılırken herhangi bir hata olup olmadığını kontrol eder.
+    Serial.println("ADXL345 bulunamadı!"); // Hata durumunda seri port aracılığıyla bir hata mesajı gönderilir.
+    while(1); // Sonsuz bir döngüde kalınarak programın durması sağlanır.
+  }
+}
+
+void loop(void) {
+  sensors_event_t event;
+  accel.getEvent(&event); // Ivyerinden veri okunur ve event yapısına atanır.
+  Serial.print("X: "); Serial.print(event.acceleration.x); Serial.print("  "); // X ivmesini seri port üzerinden göster.
+  Serial.print("Y: "); Serial.print(event.acceleration.y); Serial.print("  "); // Y ivmesini seri port üzerinden göster.
+  Serial.print("Z: "); Serial.print(event.acceleration.z); Serial.println("  m/s^2"); // Z ivmesini seri port üzerinden göster ve bir satır aşağı geç.
+  delay(500); // 0.5 saniye (500 milisaniye) beklemek için kullanılır.
+}
