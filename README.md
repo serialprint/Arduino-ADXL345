@@ -10,3 +10,12 @@ Merhaba! Bu Arduino kodu, ADXL345 ivmeölçer modülünü kullanarak üç eksenl
 4. 'loop' fonksiyonunda ivme verilerini okuyup seri port aracılığıyla görüntülüyoruz. 'sensors_event_t' türünde bir yapı oluşturarak ivme verilerini bu yapıya atıyoruz. Sonra X, Y ve Z ivmelerini seri port üzerinden gösteriyoruz. Her döngüde 0.5 saniye bekliyoruz.
 
 Bu kodu yüklediğinizde, ADXL345 modülünün üç eksenli ivme verilerini seri monitörde gözlemleyebilirsiniz. Eğlenceli projelerde kullanmanızı dileriz! 🚀💡🔌
+
+Bağlantı Şeması;
+
+ADXL345 Modülü Pin | Arduino Pin   | Açıklama
+-------------------|---------------|-----------------------------
+VCC                | 5V veya 3.3V | Güç Beslemesi
+GND                | GND           | Toprak (Ground) Bağlantısı
+SDA                | A4 (Analog 4) | I2C Veri Hattı (Data)
+SCL                | A5 (Analog 5) | I2C Saat Hattı (Clock)
